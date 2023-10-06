@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My App</title>
+	<link href="/static/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<h3>Productes</h3>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NOM</th>
+			<th>UNITATS</th>
+            <th>PHOTO</th>
+            <th>PRICE</th>
+            <th>CATEGORY_ID</th>
+            <th>SELLER_ID</th>
+            <th>CREATED</th>
+            <th>UPDATED</th>
+		</tr>
+
+	
+        {% for Producte in Productes %}
+        <tr>
+            <td><a href="{{ Producte['id'] }}"></a></td>
+            <td><a href="{{ Producte['nom'] }}"></a></td>
+            <td><a href="{{ Producte['unitats'] }}"></a></td>
+            <td><a href="{{ Producte['photo'] }}"></a></td>
+            <td><a href="{{ Producte['price'] }}"></a></td>
+            <td><a href="{{ Producte['category_id'] }}"></a></td>
+            <td><a href="{{ Producte['seller_id'] }}"></a></td>
+            <td><a href="{{ Producte['created'] }}"></a></td>
+            <td><a href="{{ Producte['updated'] }}"></a></td>
+        </tr>
+        {% endfor %}
+
+
+	</table>
+
+    <a href="/logout">LOGOUT</a>
+</body>
+
+</html>
