@@ -16,6 +16,9 @@ h1#hello {
     font-size: 36px;
 }
 
+td ,th {
+    border: 1px solid black
+}
 /* Estilos para la imagen */
 img {
     max-width: 100%;

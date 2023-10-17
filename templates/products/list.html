@@ -25,17 +25,19 @@
 		</tr>
 
 	
-        {% for Producte in Productes %}
-        <tr>
-            <td><a href="{{ Producte['id'] }}"></a></td>
-            <td><a href="{{ Producte['nom'] }}"></a></td>
-            <td><a href="{{ Producte['unitats'] }}"></a></td>
-            <td><a href="{{ Producte['photo'] }}"></a></td>
-            <td><a href="{{ Producte['price'] }}"></a></td>
-            <td><a href="{{ Producte['category_id'] }}"></a></td>
-            <td><a href="{{ Producte['seller_id'] }}"></a></td>
-            <td><a href="{{ Producte['created'] }}"></a></td>
-            <td><a href="{{ Producte['updated'] }}"></a></td>
+        {% for product in products %}
+        <tr>            
+            
+            <td><a href="/product/{{ product.id }}">{{ product.id }}</a></td>
+			<td><a href="/product/{{ product.id }}">{{ product.title }}</a></td>
+			<td><a href="/product/{{ product.id }}">{{ product.description }}</a></td>
+            <td><a href="/product/{{ product.id }}">{{ product.photo }}</a></td>
+			<td><a href="/product/{{ product.id }}">{{ product.price }}</a></td>
+			<td><a href="/product/{{ product.id }}">{{ product.category_id }}</a></td>
+            <td><a href="/product/{{ product.id }}">{{ product.seller_id }}</a></td>
+			<td><a href="/product/{{ product.id }}">{{ product.created }}</a></td>
+			<td><a href="/product/{{ product.id }}">{{ product.updated }}</a></td>
+
         </tr>
         {% endfor %}
 
