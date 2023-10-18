@@ -38,29 +38,50 @@ def list():
     return render_template('/products/list.html', products = products)
 
 @app.route('/product/<int:product_id>',methods = ['POST', 'GET'])
-def item(product_id):
+def product(product_id):
     # recupero l'item per la pk
     product = db.session.get(Productes, product_id)
     
     if request.method == 'GET':
-        return render_template('item_update.html', product = Productes)
+        return render_template('/products/update.html', product = Productes)
     else: # POST
-        nom = request.form['nom']
-        unitats = int(request.form['unitats']) # es text, el passo a enter
+        title = request.form['title']
+        description = int(request.form['description']) # es text, el passo a enter
 
         # actualitzo els valors de l'item
-        product.nom = nom
-        product.unitats = unitats
+        product.title = title
+        product.description = description
 
         # notifico que item ha canviat i amb el commit és guarda a la BBDD
-        db.session.add(item)
+        db.session.add(product)
         db.session.commit()
 
         # https://en.wikipedia.org/wiki/Post/Redirect/Get
-        return redirect(url_for('item', product_id = product_id))
+        return redirect(url_for('product', product_id = product_id))
 
 
+@app.route('/product/create', methods = ['POST', 'GET'])
+def create():
+    # recupero l'item per la pk
+    product = Productes()
+    if request.method == 'GET':
 
+        return render_template('/products/create.html', product = product)
+    else:
+        title = request.form['title']
+        description = request.form['description']
+        photo = request.form['photo']
+        price = request.form['price']
+        # actualitzo els valors de l'item
+        product.title = title
+        product.description = description
+        product.photo = photo
+        product.price =  price
+        # notifico que item ha canviat i amb el commit és guarda a la BBDD
+        db.session.add(product)
+        db.session.commit()
+
+        return redirect(url_for('list'))
 
 
 if __name__ == '__main__':

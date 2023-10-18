@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="ca">
 
-{% from "_formhelpers.html" import render_field %}
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,16 +10,14 @@
 </head>
 
 <body>
-   <h2>Hola {{ user.email }}!</h2>
-   <h3>Item {{ item.id }}</h3>
+   <h3>Item {{ product['id'] }}</h3>
 
-   <form action="/item/{{ item.id }}" method = "POST">
-      {{ form.csrf_token }}
-      {{ render_field(form.nom) }}
-      {{ render_field(form.unitats) }}
-      {{ form.submit(value="MODIFICAR") }}
+   <form action="/product/{{ product.id }}" method = "POST">
+      <p><label>Nom: <input type = "text" name = "title" value = "{{ product.title }}"/></label></p>
+      <p><label>Unitats: <input type = "number" name = "description" value = "{{ product.description }}"/></label></p>
+      <p><input type = "submit" value = "MODIFICAR" /></p>
    </form>
-   <a href="/item">&#x3c;&#x3c; Tornar al llistat d'items</a>
+   <a href="/product">&#x3c;&#x3c; Tornar al llistat d'items</a>
 </body>
 
 </html>
