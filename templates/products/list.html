@@ -37,16 +37,18 @@
             <td><a href="/product/{{ product.id }}">{{ product.seller_id }}</a></td>
 			<td><a href="/product/{{ product.id }}">{{ product.created }}</a></td>
 			<td><a href="/product/{{ product.id }}">{{ product.updated }}</a></td>
-
+			<td><a href="/product/delete/{{ product.id }}"> ELIMINAR </a></td>
+			<td><a href="/product/{{ product.id }}"> MODIFICAR </a></td>
+			<td><a href="/product/read/{{ product.id }}"> VER </a></td>
         </tr>
         {% endfor %}
 
 
 	</table>
 
-    <a class="boton" href="/logout">LOGOUT</a>
+
 	<a class="boton" href="/product/create"> CREATE </a>
-	<a class="boton" href="/product/delete"> DELETE </a>
+
 </body>
 
 </html>

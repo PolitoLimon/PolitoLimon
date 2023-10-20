@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>My App</title>
+   <link href="/static/style.css" rel="stylesheet">
+</head>
+
+<body>
+   <h3>Products {{ product.id }}</h3>
+   <tr><a href="/product/{{ product.id }}">Modificar item</a></tr>
+   <br />
+   <a href="/product/delete/{{ product.id }}">Esborrar item</a>
+   <ul>
+      <li>Nom: {{ product.title }}</li>
+      <li>Unitats: {{ product.description }}</li>
+      <li>Photo: {{ product.photo }}</li>
+      <li>Preu: {{ product.price }}</li>
+ 
+   </ul>
+   <a href="/product">&#x3c;&#x3c; Tornar al llistat d'items</a>
+</body>
+</html>

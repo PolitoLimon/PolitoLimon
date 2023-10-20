@@ -43,10 +43,10 @@ def product(product_id):
     product = db.session.get(Productes, product_id)
     
     if request.method == 'GET':
-        return render_template('/products/update.html', product = Productes)
+        return render_template('/products/update.html', product = product)
     else: # POST
         title = request.form['title']
-        description = int(request.form['description']) # es text, el passo a enter
+        description = request.form['description'] # es text, el passo a enter
 
         # actualitzo els valors de l'item
         product.title = title
@@ -57,7 +57,7 @@ def product(product_id):
         db.session.commit()
 
         # https://en.wikipedia.org/wiki/Post/Redirect/Get
-        return redirect(url_for('product', product_id = product_id))
+        return redirect(url_for('list'))
 
 
 @app.route('/product/create', methods = ['POST', 'GET'])
@@ -72,16 +72,38 @@ def create():
         description = request.form['description']
         photo = request.form['photo']
         price = request.form['price']
-        # actualitzo els valors de l'item
+
         product.title = title
         product.description = description
         product.photo = photo
         product.price =  price
-        # notifico que item ha canviat i amb el commit és guarda a la BBDD
+     
         db.session.add(product)
         db.session.commit()
 
         return redirect(url_for('list'))
+    
+@app.route('/product/delete/<int:product_id>',methods = ['GET', 'POST'])
+def products_delete(product_id):
+    # select amb 1 resultat
+    product = db.session.query(Productes).filter(Productes.id == product_id).one()
+
+    if request.method == 'GET':
+        return render_template('/products/delete.html', product = product)
+    else: # POST
+        # delete!
+        db.session.delete(product)
+        db.session.commit()
+
+        return redirect(url_for('list'))
+    
+
+@app.route('/product/read/<int:product_id>')
+def products_read(product_id):
+
+    product = db.session.query(Productes).filter(Productes.id == product_id).one()
+    
+    return render_template('/products/read.html', product = product)
 
 
 if __name__ == '__main__':

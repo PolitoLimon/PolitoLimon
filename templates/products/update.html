@@ -6,15 +6,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>My App</title>
-	<link href="/static/style.css" rel="stylesheet">
+	<link href="/static/formularis.css" rel="stylesheet">
 </head>
 
 <body>
-   <h3>Item {{ product['id'] }}</h3>
+   <h3>Pruducts {{ product['id'] }}</h3>
 
    <form action="/product/{{ product.id }}" method = "POST">
       <p><label>Nom: <input type = "text" name = "title" value = "{{ product.title }}"/></label></p>
-      <p><label>Unitats: <input type = "number" name = "description" value = "{{ product.description }}"/></label></p>
+      <p><label>Unitats: <input type = "text" name = "description" value = "{{ product.description }}"/></label></p>
+      <p><label>Nom: <input type = "text" name = "photo" value = "{{ product.photo }}"/></label></p>
+      <p><label>Unitats: <input type = "number" name = "price" value = "{{ product.price }}"/></label></p>
       <p><input type = "submit" value = "MODIFICAR" /></p>
    </form>
    <a href="/product">&#x3c;&#x3c; Tornar al llistat d'items</a>
